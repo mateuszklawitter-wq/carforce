@@ -3,40 +3,38 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-// Each feature section uses a pad macro photo as its dramatic visual
-// Photos are from the CarForce Performance Pad lineup — same dark-background style
 const FEATURES = [
   {
     id: "moc",
     num: "01",
-    title: "Moc przemysłowa.",
-    sub: "1200 W bez kompromisów.",
-    body: "Silnik brushless 1200 W zaprojektowany do ciągłej pracy warsztatowej. Elektroniczna stabilizacja prędkości utrzymuje stałe obroty pod obciążeniem — niezależnie od twardości lakieru czy gradacji padu.",
-    detail: "1200 W · Brushless",
+    eyebrow: "Moc",
+    title: "1200 W bez kompromisów.",
+    body: "Brushless 1200 W z elektroniczną stabilizacją obrotów. Stałe tempo pracy pod obciążeniem, niezależnie od twardości lakieru i gradacji padu.",
+    stat: { v: "1200 W", l: "Moc silnika" },
     img: "/images/pads/pad-czerwony.jpg",
-    alt: "Pad tnący CarForce Performance — czerwony",
+    alt: "Pad tnący Performance — czerwony",
     imgRight: false,
   },
   {
     id: "precyzja",
     num: "02",
-    title: "Precyzja\ndetailingu.",
-    sub: "600–6500 rpm, pełna kontrola.",
-    body: "Płynna regulacja skoku 8 mm i elektronicznie sterowana prędkość pozwalają pracować zarówno na etapie agresywnej korekty jak i finalnego wykończenia. Jeden przyrząd — cały zakres pracy.",
-    detail: "8 mm skok · 600–6500 rpm",
+    eyebrow: "Precyzja",
+    title: "Pełna kontrola obrotów.",
+    body: "Płynna regulacja 600–6500 rpm i 8 mm skoku pozwala pracować od agresywnej korekty po finalne wykończenie. Jedno urządzenie, cały zakres pracy.",
+    stat: { v: "600–6500", l: "rpm" },
     img: "/images/pads/pad-pomaranczowy.jpg",
-    alt: "Pad polerski CarForce Performance — pomarańczowy",
+    alt: "Pad polerski Performance — pomarańczowy",
     imgRight: true,
   },
   {
     id: "trwalosc",
     num: "03",
-    title: "Trwałość\nna lata.",
-    sub: "Premium materiały, serwis w Polsce.",
-    body: "Aluminiowa obudowa głowicy, łożyska precyzyjne i uszczelnienia przemysłowe. 12 miesięcy gwarancji z serwisem gwarancyjnym na terenie Polski. Narzędzie, które rośnie razem z Twoim biznesem.",
-    detail: "12 mies. gwarancji · PL serwis",
+    eyebrow: "Trwałość",
+    title: "Zaprojektowane na lata.",
+    body: "Aluminiowa głowica, łożyska precyzyjne, uszczelnienia przemysłowe. 12 miesięcy gwarancji z serwisem w Polsce.",
+    stat: { v: "12 mies.", l: "Gwarancji" },
     img: "/images/pads/pad-granatowy.jpg",
-    alt: "Pad wykończeniowy CarForce Performance — granatowy",
+    alt: "Pad wykończeniowy Performance — granatowy",
     imgRight: false,
   },
 ];
@@ -45,20 +43,20 @@ const e = "easeOut" as const;
 
 export default function FeatureSections() {
   return (
-    <div>
-      {FEATURES.map((f, i) => (
+    <div className="bg-[#080808]">
+      {FEATURES.map((f) => (
         <section
           key={f.id}
-          className={`relative overflow-hidden ${i % 2 === 0 ? "bg-[#080808]" : "bg-[#0a0a0a]"}`}
+          className="relative border-b border-[#111111] last:border-b-0"
         >
           <div
-            className={`max-w-[1400px] mx-auto grid lg:grid-cols-2 ${f.imgRight ? "lg:grid-flow-dense" : ""}`}
-            style={{ minHeight: "80vh" }}
+            className={`grid lg:grid-cols-2 ${f.imgRight ? "lg:grid-flow-dense" : ""}`}
+            style={{ minHeight: "min(85vh, 800px)" }}
           >
-            {/* ── image panel ── */}
+            {/* Image panel */}
             <div
               className={`relative overflow-hidden ${f.imgRight ? "lg:col-start-2" : ""}`}
-              style={{ minHeight: "50vw", maxHeight: "700px" }}
+              style={{ minHeight: "60vw" }}
             >
               <Image
                 src={f.img}
@@ -67,58 +65,57 @@ export default function FeatureSections() {
                 className="object-cover object-center"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
-              {/* Gradient fade toward text side */}
+              {/* Soft fade toward text side */}
               <div
+                aria-hidden
                 className={`absolute inset-0 ${
                   f.imgRight
-                    ? "bg-gradient-to-l from-transparent via-transparent to-[rgba(8,8,8,0.5)]"
-                    : "bg-gradient-to-r from-transparent via-transparent to-[rgba(8,8,8,0.5)]"
+                    ? "bg-gradient-to-l from-transparent to-[rgba(8,8,8,0.35)]"
+                    : "bg-gradient-to-r from-transparent to-[rgba(8,8,8,0.35)]"
                 }`}
               />
             </div>
 
-            {/* ── text panel ── */}
+            {/* Text panel */}
             <div
-              className={`flex flex-col justify-center px-10 py-20 lg:px-16 xl:px-24 ${
+              className={`flex flex-col justify-center px-8 lg:px-16 xl:px-24 py-20 lg:py-28 ${
                 f.imgRight ? "lg:col-start-1 lg:row-start-1" : ""
               }`}
             >
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, ease: e }}
-                className="flex flex-col gap-6"
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.65, ease: e }}
+                className="flex flex-col gap-7 max-w-md"
               >
                 <div className="flex items-center gap-4">
-                  <span
-                    className="font-extrabold tracking-[-0.04em] text-[#161616] select-none"
-                    style={{ fontSize: "clamp(3.5rem, 6vw, 5.5rem)" }}
-                  >
+                  <span className="text-[#e3000f] text-xs font-bold tracking-[0.25em]">
                     {f.num}
                   </span>
-                  <span className="label">{f.sub}</span>
+                  <span className="w-8 h-px bg-[#1f1f1f]" />
+                  <span className="label !text-[#666666]">{f.eyebrow}</span>
                 </div>
 
                 <h2
-                  className="font-extrabold text-white leading-[1.04] tracking-[-0.03em] whitespace-pre-line"
-                  style={{ fontSize: "clamp(2.2rem, 4vw, 3.8rem)" }}
+                  className="font-extrabold text-white leading-[1.02] tracking-[-0.035em]"
+                  style={{ fontSize: "clamp(2rem, 3.5vw, 3.4rem)" }}
                 >
                   {/* TODO: final copy */}
                   {f.title}
                 </h2>
 
-                <span className="block w-8 h-[2px] bg-[#e3000f]" />
-
-                <p className="text-[#555555] text-base leading-[1.85] max-w-md">
+                <p className="text-[#555555] text-[15px] leading-[1.85]">
                   {/* TODO: final copy */}
                   {f.body}
                 </p>
 
-                <div className="pt-2">
-                  <span className="inline-flex items-center gap-2 px-3 py-1.5 border border-[#1e1e1e] rounded-[3px]">
-                    <span className="w-px h-3.5 bg-[#e3000f]" />
-                    <span className="text-[#444444] text-[11px] font-semibold tracking-wider">{f.detail}</span>
+                <div className="flex items-baseline gap-3 pt-2">
+                  <span className="text-white text-3xl font-extrabold tracking-[-0.02em] leading-none">
+                    {f.stat.v}
+                  </span>
+                  <span className="text-[#3a3a3a] text-[10px] font-semibold tracking-[0.18em] uppercase">
+                    {f.stat.l}
                   </span>
                 </div>
               </motion.div>

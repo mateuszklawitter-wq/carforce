@@ -1,25 +1,25 @@
 const ITEMS = [
-  "PROFESJONALNE POLEROWANIE",
-  "MADE IN GDYNIA",
+  "Profesjonalne polerowanie",
+  "Made in Gdynia",
   "1200 W",
-  "PREMIERA CZERWIEC 2026",
-  "CARFORCE DETAILING",
-  "POLSKA MARKA",
-  "12 MIESIĘCY GWARANCJI",
-  "600–6500 OBR/MIN",
+  "Premiera czerwiec 2026",
+  "CarForce Detailing",
+  "6 gradacji padów",
+  "12 miesięcy gwarancji",
+  "600–6500 obr/min",
 ];
 
 export default function Marquee() {
   const doubled = [...ITEMS, ...ITEMS];
   return (
-    <div className="overflow-hidden border-y border-[#1a1a1a] bg-[#0a0a0a] py-3.5 select-none">
-      <div className="flex gap-0 animate-marquee whitespace-nowrap w-max">
+    <div className="overflow-hidden border-y border-[#111111] bg-[#070707] py-5 select-none">
+      <div className="flex animate-marquee whitespace-nowrap w-max">
         {doubled.map((item, i) => (
-          <span key={i} className="inline-flex items-center">
-            <span className="text-[#333333] text-[10px] font-semibold tracking-[0.22em] uppercase px-7">
+          <span key={i} className="inline-flex items-center gap-7">
+            <span className="text-[#5a5a5a] text-[11px] font-semibold tracking-[0.32em] uppercase pl-7">
               {item}
             </span>
-            <span className="text-[#e3000f] text-[5px]">●</span>
+            <span className="text-[#e3000f] text-[6px]">●</span>
           </span>
         ))}
       </div>
