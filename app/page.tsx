@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import Marquee from "@/components/Marquee";
 import VideoSection from "@/components/VideoSection";
 import Features from "@/components/Features";
 import Specs from "@/components/Specs";
@@ -12,6 +13,7 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
+      <Marquee />
       <VideoSection />
       <Features />
       <Specs />

@@ -1,7 +1,8 @@
 export const SHOPIFY_URL =
   process.env.NEXT_PUBLIC_SHOPIFY_URL ?? "https://sklep.carforce.pl/products/maszyna-polerska";
 
-export const LAUNCH_DATE = new Date("2025-06-10T10:00:00+02:00");
+// TODO: update year when confirmed — currently targeting 10 June 2026
+export const LAUNCH_DATE = new Date("2026-06-10T10:00:00+02:00");
 
 export const SPECS = [
   { label: "Moc silnika", value: "1200 W" },
@@ -16,7 +17,7 @@ export const SPECS = [
 export const FAQ_ITEMS = [
   {
     q: "Kiedy maszyna będzie dostępna?",
-    a: "Planowana data premiery to 10 czerwca 2025. Osoby zapisane na listę pre-order otrzymają powiadomienie jako pierwsze i będą mogły złożyć zamówienie przed oficjalną sprzedażą.",
+    a: "Planowana data premiery to 10 czerwca 2026. Osoby zapisane na listę pre-order otrzymają powiadomienie jako pierwsze i będą mogły złożyć zamówienie przed oficjalną sprzedażą.",
   },
   {
     q: "Czym różni się pre-order od zwykłego zamówienia?",

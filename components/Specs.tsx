@@ -5,77 +5,86 @@ import { SPECS } from "@/lib/constants";
 
 export default function Specs() {
   return (
-    <section id="specs" className="bg-[#111111] py-24 px-6">
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-start">
-        {/* Left */}
+    <section id="specs" className="bg-[#080808] py-28 px-6">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 xl:gap-24 items-start">
+
+        {/* LEFT */}
         <motion.div
-          initial={{ opacity: 0, x: -24 }}
+          initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.55, ease: "easeOut" }}
+          transition={{ duration: 0.55, ease: "easeOut" as const }}
+          className="lg:sticky lg:top-28"
         >
-          <span className="section-badge block mb-4">
+          <span className="label block mb-5">Dane techniczne</span>
+          <h2
+            className="font-extrabold text-white tracking-[-0.03em] leading-[1.05] mb-6"
+            style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
+          >
             {/* TODO: final copy */}
-            Dane techniczne
-          </span>
-          <div className="red-line" />
-          <h2 className="text-3xl md:text-4xl font-bold text-white mt-2 mb-6">
-            {/* TODO: final copy */}
-            Maszyna gotowa na każde wyzwanie
+            Maszyna gotowa<br />na każde wyzwanie.
           </h2>
-          <p className="text-[#888888] leading-relaxed max-w-md">
+          <span className="hairline block mb-6" />
+          <p className="text-[#555555] text-sm leading-[1.9] max-w-sm">
             {/* TODO: final copy */}
-            Każdy parametr maszyny CarForce został dobrany w oparciu o
-            doświadczenie naszych specjalistów i potrzeby profesjonalnych
-            detailerów. Żadnego kompromisu — tylko to, czego potrzebujesz.
+            Każdy parametr dobrany w oparciu o lata doświadczenia
+            naszych specjalistów i codzienne potrzeby profesjonalnych
+            detailerów. Zero kompromisów.
           </p>
-          <div className="mt-8 p-5 rounded-[6px] border border-[rgba(227,0,15,0.2)] bg-[rgba(227,0,15,0.05)]">
-            <p className="text-sm text-[#888888]">
-              <span className="text-white font-semibold">Data premiery:</span>{" "}
-              {/* TODO: final copy */}
-              10 czerwca 2025
-            </p>
-            <p className="text-sm text-[#888888] mt-1">
-              <span className="text-white font-semibold">Dostępność:</span>{" "}
-              {/* TODO: final copy */}
-              Polska, wysyłka w 24h od dnia premiery
-            </p>
+
+          {/* Launch info card */}
+          <div className="mt-10 p-5 rounded-[4px] border border-[#1e1e1e] bg-[#0d0d0d]">
+            <div className="flex flex-col gap-2.5">
+              {[
+                { k: "Data premiery", v: "10 czerwca 2026" },
+                { k: "Dostępność", v: "Polska — wysyłka 24h od premiery" },
+                { k: "Dystrybucja", v: "sklep.carforce.pl" },
+              ].map(({ k, v }) => (
+                <div key={k} className="flex items-start justify-between gap-4 text-sm">
+                  <span className="text-[#444444] shrink-0">{k}</span>
+                  <span className="text-[#888888] text-right">{v}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </motion.div>
 
-        {/* Right: specs table */}
+        {/* RIGHT */}
         <motion.div
-          initial={{ opacity: 0, x: 24 }}
+          initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.55, ease: "easeOut" }}
+          transition={{ duration: 0.55, ease: "easeOut" as const, delay: 0.05 }}
         >
-          <span className="section-badge block mb-4">
-            SPECYFIKACJA TECHNICZNA
-          </span>
-          <div className="rounded-[6px] border border-[#222222] overflow-hidden">
+          <span className="label block mb-5">Specyfikacja techniczna</span>
+
+          <div className="divide-y divide-[#141414]">
             {SPECS.map((row, i) => (
-              <div
+              <motion.div
                 key={row.label}
-                className={`flex items-stretch border-b border-[#222222] last:border-b-0 ${
-                  i % 2 === 0 ? "bg-[#111111]" : "bg-[#161616]"
-                }`}
+                initial={{ opacity: 0, x: 12 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, ease: "easeOut" as const, delay: i * 0.06 }}
+                className="group flex items-center justify-between gap-6 py-4 hover:bg-[rgba(255,255,255,0.01)] transition-colors px-1"
               >
-                <div className="w-1 bg-[#e3000f] shrink-0" />
-                <div className="flex flex-1 items-center justify-between px-5 py-4 gap-4">
-                  <span className="text-[#888888] text-sm font-medium">
-                    {/* TODO: final copy */}
-                    {row.label}
-                  </span>
-                  <span className="text-white text-sm font-semibold text-right">
-                    {/* TODO: final value */}
-                    {row.value}
-                  </span>
+                <div className="flex items-center gap-4">
+                  <div className="w-px h-4 bg-[#e3000f] opacity-50 group-hover:opacity-100 shrink-0 transition-opacity" />
+                  <span className="text-[#555555] text-sm">{row.label}</span>
                 </div>
-              </div>
+                <span className="text-white text-sm font-semibold text-right">{row.value}</span>
+              </motion.div>
             ))}
           </div>
+
+          {/* Bottom note */}
+          <p className="mt-8 text-[#333333] text-xs leading-relaxed">
+            {/* TODO: final copy */}
+            * Specyfikacja może ulec zmianie przed oficjalną premierą. Ostateczne parametry
+            zostaną potwierdzone wraz z dostępnością produktu.
+          </p>
         </motion.div>
+
       </div>
     </section>
   );
