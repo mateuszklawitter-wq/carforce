@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const LINKS = [
   { label: "Specyfikacja", id: "specs" },
+  { label: "Akcesoria", id: "accessories" },
   { label: "Video", id: "video" },
   { label: "FAQ", id: "faq" },
 ];
