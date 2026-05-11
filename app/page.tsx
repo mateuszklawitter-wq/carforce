@@ -1,8 +1,8 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
-import VideoSection from "@/components/VideoSection";
-import Features from "@/components/Features";
+import ApplicationSection from "@/components/ApplicationSection";
+import FeatureSections from "@/components/FeatureSections";
 import InTheBox from "@/components/InTheBox";
 import Specs from "@/components/Specs";
 import Accessories from "@/components/Accessories";
@@ -16,8 +16,8 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Marquee />
-      <VideoSection />
-      <Features />
+      <ApplicationSection />
+      <FeatureSections />
       <InTheBox />
       <Specs />
       <Accessories />
